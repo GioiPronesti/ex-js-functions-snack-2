@@ -62,39 +62,26 @@ function screenTimeSeconds(message) {
 }
 
 screenTimeSeconds("every tot seconds on screen!");
-/*
+*/
 
 // 6 closure function automatic counter
 
-/*
 function superCounter(time) {
   let count = 0;
-  return function incrementa() {
+  return function () {
     setInterval(() => {
       count++;
-      console.log(count);
-
-      if (count % 2 === 0 && count <= 7) {
-        console.log("Counter sample even");
-      }
-      setTimeout(() => {
-        if (count === 7) {
-          console.log("Reset autoCounter ");
-          clearInterval(autoCounter);
-        }
-      }, 10000);
+      console.log(`The number of counter is : ${count}`);
     }, time);
   };
 }
 
-const autoCounter = superCounter(5000);
+const autoCounter = superCounter(1000);
 autoCounter(); // Start the counter immediately
 
 // clearInterval(autoCounter); // Stop the counter immediately
 
-
-*/
-
+/*
 // 7
 
 const samplesTest = function goAndStop(test, startTime, stopTime) {
@@ -117,3 +104,5 @@ const samplesTest = function goAndStop(test, startTime, stopTime) {
 
 const timer = samplesTest("hello", 1000, 9000);
 timer(); // Start the timer immediately
+
+*/
