@@ -66,6 +66,8 @@ screenTimeSeconds("every tot seconds on screen!");
 
 // 6 closure function automatic counter
 
+/*
+
 function superCounter(time) {
   let count = 0;
   return function () {
@@ -81,28 +83,21 @@ autoCounter(); // Start the counter immediately
 
 // clearInterval(autoCounter); // Stop the counter immediately
 
-/*
+*/
+
 // 7
 
-const samplesTest = function goAndStop(test, startTime, stopTime) {
-  let count = 0;
+function goAndStop(test, startTime, stopTime) {
+  // to stop set interval create a
+  // variable to store the interval id e reset on setTimeout
+  const clockId = setInterval(() => {
+    console.log(test);
+  }, startTime);
 
-  return function () {
-    count++;
-    const clock = setInterval(() => {
-      console.log(test);
-    }, startTime);
+  setTimeout(() => {
+    console.log("stop timer");
+    clearInterval(clockId);
+  }, stopTime);
+}
 
-    if (test) {
-      setTimeout(() => {
-        console.log("stop timer");
-      }, stopTime);
-      clearInterval(clock);
-    }
-  };
-};
-
-const timer = samplesTest("hello", 1000, 9000);
-timer(); // Start the timer immediately
-
-*/
+goAndStop("hello", 1000, 9000);
