@@ -17,9 +17,7 @@ console.log(somma(4, 8));
 
 // sintassi di una funzione a freccia
 
-const somma2 = (c, d) => {
-  return c + d;
-};
+const somma2 = (c, d) => c + d;
 
 const res = somma2(7, 6);
 
@@ -27,7 +25,7 @@ console.log(res);
 
 // 2 arrow function per quadrato number in una riga di codice
 
-const square = (num) => num * num;
+const square = (num) => num * num; // n** 2
 console.log(square(9));
 
 // 3 funzione operazione callback
@@ -41,41 +39,81 @@ const product = calculate(12, 8, moltiplica);
 console.log(product);
 // 4 timer function
 
+/*
 const timesover = function (time) {
   return function () {
     setTimeout(() => {
-      console.log("time is out");
+      console.log("the time is over");
     }, time);
   };
 };
 
-const timer = timesover(10000);
+const timer = timesover(2000);
 timer();
+*/
 
+/*
 // 5 set interval function
+
 function screenTimeSeconds(message) {
-  console.log(`this is setInterval ${message}`);
+  setInterval(() => {
+    console.log(message);
+  }, 1000);
 }
 
-const clock = setInterval(screenTimeSeconds, 2000);
-
-screenTimeSeconds("ehy there!");
-
-clearInterval(clock);
+screenTimeSeconds("every tot seconds on screen!");
+/*
 
 // 6 closure function automatic counter
 
+/*
 function superCounter(time) {
   let count = 0;
   return function incrementa() {
     setInterval(() => {
       count++;
-
       console.log(count);
+
+      if (count % 2 === 0 && count <= 7) {
+        console.log("Counter sample even");
+      }
+      setTimeout(() => {
+        if (count === 7) {
+          console.log("Reset autoCounter ");
+          clearInterval(autoCounter);
+        }
+      }, 10000);
     }, time);
   };
 }
 
-const counter = superCounter(1500);
+const autoCounter = superCounter(5000);
+autoCounter(); // Start the counter immediately
 
-counter();
+// clearInterval(autoCounter); // Stop the counter immediately
+
+
+*/
+
+// 7
+
+const samplesTest = function goAndStop(test, startTime, stopTime) {
+  let count = 0;
+
+  return function () {
+    count++;
+    const clock = setInterval(() => {
+      console.log(test);
+    }, startTime);
+
+    if (test) {
+      setTimeout(() => {
+        console.log("stop timer");
+      }, stopTime);
+      clearInterval(clock);
+    }
+  };
+};
+
+const timer = samplesTest("hello", 1000, 9000);
+timer(); // Start the timer immediately
